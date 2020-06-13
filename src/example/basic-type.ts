@@ -21,15 +21,41 @@ str = `数字是${num}`
 // 数组类型
 
   // 只能是一种类型的
-let arr:Number[]
+  //写法1
+let arr:number[]
 arr = [1,23]
+// 写法2
 let arr2:Array<number>
 arr2 = [1,24]
 
-// 混合类型
-
+// 联合类型
+//写法1
 let arr3:(Number|string)[]
 arr3= [32,'32']
-
+// 写法2
 let arr4:Array<Number|String>
 arr4 = [32,'32']
+
+// 元组类型 - 固定长度和类型的， 不能越界
+
+let tuple:[number,string,boolean]
+tuple = [1,'str',false]
+let x: [string,number]
+x = ['str',123]
+
+// 枚举
+
+enum Name {
+  'xiaohong',
+  'wanger' = 12,
+  'zhangsan'
+}
+console.log(Name.xiaohong)
+
+// any 类型 任何都可以
+
+const arrAny:any[] = [1,'32']
+let value:any
+value = false
+value = ''
+value = 32
