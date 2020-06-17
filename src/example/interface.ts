@@ -48,7 +48,7 @@ const f = {
 console.log(printFruit(f))
 
 
-// (3) 索引签名来解决多余参数 
+// (3) 索引签名-类型来解决多余参数 
 
 interface Person {
   readonly sex: string,
@@ -71,3 +71,38 @@ console.log(createPerson(
     dd:45345
   }
 ))
+
+// 用接口来定义 数据中元素类型  
+
+interface arrInfo {
+  0: Number,
+  1:String,
+  readonly 2: string
+}
+
+let arr11:arrInfo = [4324,'stre','不能修改']
+// arr11[2] = '' // Cannot assign to '2' because it is a read-only property.ts(254
+
+// 定义函数
+
+interface fnInfo {(num1:number,params:string):string}
+
+// 使用
+
+let getUserNName:fnInfo = ((user,name)=> {
+  return `${user}${name}`
+})
+
+getUserNName(1,'ee')
+
+// 索引签名 - 索引类型 -索引类型 - 可以在接口中任意属性名，并规定类型和值的类型
+
+interface Type1 {
+  [id:number]:number,
+  name:string
+}
+
+const obj2:Type1 = {
+  3:2,
+  name:"x",
+}
