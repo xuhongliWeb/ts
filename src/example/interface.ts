@@ -95,6 +95,14 @@ let getUserNName:fnInfo = ((user,name)=> {
 
 getUserNName(1,'ee')
 
+// 第二种 type 别名
+
+type userFn = (user:string,name:string) => string // 
+
+let getName:userFn = (user,user2)=> user+user2
+
+getName('str2','str')
+
 // 索引签名 - 索引类型 -索引类型 - 可以在接口中任意属性名，并规定类型和值的类型
 
 interface Type1 {
@@ -106,3 +114,47 @@ const obj2:Type1 = {
   3:2,
   name:"x",
 }
+
+// 接口的继承 extends ...
+
+interface xiaoming {
+  sex:string,
+}
+interface zhangsan1 {
+  JOB:string,
+}
+interface zhangsan extends xiaoming,zhangsan1{
+  // sex:string,
+  book: string
+}
+interface lisi {
+  // sex:string,
+  count:number
+}
+
+const p1:zhangsan = {
+  book:'《》',
+  sex:'nan',
+  JOB: 'teacher'
+}
+
+// 混合类型 
+
+interface Counter {
+  ():void,
+  count:number,
+  reset():void,
+}
+
+const getCounter = ():Counter => {
+  const count = ()=> {count.count++}
+  count.count = 0
+  count.reset = () => {}
+  return count
+}
+const c = getCounter()
+c()
+console.log(c.count)
+c()
+console.log(c.count)
+
