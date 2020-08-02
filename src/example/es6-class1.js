@@ -182,22 +182,22 @@ console.log(s.name = 'li')
 // console.log(pp2.fun1())
 
 // 第2种
-// let fun1 = Symbol('fun1')
-// function fun2 () {
-//     console.log('我是Point 的私有方法')
-// }
-// class Point {
-//     constructor (x) {
-//         this.x = x
-//     }
-//     static [fun1] () {
-//     console.log('我是Point 的私有方法')
+let fun1 = Symbol('fun1')
+function fun2 () {
+    console.log('我是Point 的私有方法')
+}
+class Point {
+    constructor (x) {
+        this.x = x
+    }
+    static [fun1] () {
+    console.log('我是Point 的私有方法')
 
-//     }
-// }
+    }
+}
 
-// let pp2 = new Point(2)
-
+let pp2 = new Point(2)
+console.log(pp2, 'pp2')
 
 // 私有属性
 
