@@ -41,11 +41,11 @@ const item = getRandomValue()
 // }
 
 
-if (typeof item == 'string') {
-    console.log(item.length)
-} else {
-    console.log(item.toFixed())
-}
+// if (typeof item == 'string') {
+//     console.log(item.length)
+// } else {
+//     console.log(item.toFixed())
+// }
 // string/number/boolean/symbol中的一种
 // if (typeof item === 'undefined') {
 //     console.log(item.toString())
@@ -135,7 +135,7 @@ let _interface: Interface = {
 }
 _alias = _interface
 
-type Name = 'Lison'
+type mame = 'Lison'
 // const name3: Name = 'haha'
 type Direction = 'north' | 'east' | 'south' | 'west'
 function getDirectionFirstLetter(direction: Direction) {
@@ -185,7 +185,9 @@ function getArea(s: Shape): number {
 }
 
 // 类型保护 
-
+function isString(value:number|string): value is        string {
+  return typeof value === 'string'
+}
 class Java {
   HelloJava() {
     console.log('java')
@@ -221,7 +223,7 @@ function sayHello(type:Type) {
   }else {
     lang.HelloJavaScript()
   }
-  // 3. typeof 判断
+  // 3. typeof 判断 string / number / boolean / symbol
   // 4. 自己写函数判断 -- 复杂类型
 }
 
@@ -248,3 +250,83 @@ interface Te {
 }
 
 let aaa: keyof Te // 这时 aaa 就是 a | b  的联合类型
+
+
+// 类型别名
+
+type Str = (s:string,s2:number) => String
+
+let qq: Str
+
+type Pos<T> = {x:T,y:T}
+
+// 泛型 别名
+const pos:Pos<number> = {
+  x:1,
+  y:3
+}
+
+
+type Tree<T> = {
+  current:T,
+  child?:Tree<T>
+}
+
+let tree:Tree<string> = {
+  current: 'string',
+  child: {
+    current:'s'
+  }
+}
+
+type Alaias = {
+  ss:number
+}
+interface IFa {
+  ss: number
+}
+
+// 类型别名 不能 继承 不能 implements
+
+// type aaa extends Alaias = {
+//   bb: string
+// } 
+
+interface bb extends IFa {
+  bb: string
+}
+
+const tte:bb = {
+  ss:232,
+  bb:'3'
+}
+type n = 'll'
+
+// const xx:n = 'l' // 只能为ll
+
+
+type Opti = 'q'| 'fsd' | 'vxcv'
+
+function getOp(params:Opti) {
+  return params.substr(0,1)
+}
+
+// getOp('ss') // 会有选项提示 错误也有
+
+const tObj = {
+  a: 'a',
+  b:'b',
+  c:'c'
+}
+
+const getKeys = function <T,K extends keyof T>(obj:T,key:K) {
+  return obj[key]
+}
+
+console.log(getKeys(tObj,'a'))
+// console.log(getKeys(tObj,'cc')) // 报错
+
+
+let test:keyof bb
+
+// type PartailObj = partial<IFa>
